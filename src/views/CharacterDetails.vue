@@ -8,16 +8,14 @@
 <script>
 import CharacterService from "@/services/CharacterService.js";
 export default {
-  props: ["name", "_url"],
+  props: ["id"],
   data() {
     return {
       character: "",
-      url: null,
     };
   },
   created() {
-    this.url = this.$route.params._url;
-    CharacterService.getCharacter(this.url)
+    CharacterService.getCharacter(this.$route.params.id)
       .then((response) => {
         this.character = response.data;
       })

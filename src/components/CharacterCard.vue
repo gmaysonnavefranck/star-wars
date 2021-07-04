@@ -2,16 +2,16 @@
   <router-link
     :to="{
       name: 'CharacterDetails',
-      params: { name: character.name, _url: character.url },
+      params: { id: character.id },
     }"
   >
-    <div>
+    <div class="card" style="width: 15rem">
+      <div class="card-header">{{ character.name.toLowerCase() }}</div>
+      <!-- Bug with the font, everything must be lowercase. -->
       <img
-        src="https://www.w3schools.com/images/w3schools_green.jpg"
-        alt="W3Schools.com"
-        style="width: 104px; height: 142px"
+        src="https://www.estudarfora.org.br/wp-content/webp-express/webp-images/uploads/2018/05/cursos-sobre-Star-Wars-1-768x512.jpg.webp"
+        class="card-img-top"
       />
-      <span>Name: {{ character.name }}</span>
     </div>
   </router-link>
 </template>
@@ -26,4 +26,24 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.card {
+  background-color: #22282e !important;
+  border-color: yellow !important;
+}
+.card-header {
+  font-family: "Star Jedi";
+  src: local("Star Jedi"),
+    url("~@/assets/fonts/star-jedi.ttf") format("truetype");
+  color: yellow;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-header a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+</style>

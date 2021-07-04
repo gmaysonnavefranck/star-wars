@@ -1,9 +1,9 @@
 <template>
   <div class="characterList">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-md-center">
         <div
-          class="col-sm"
+          class="col-md-auto mt-4"
           v-for="character in characters"
           :key="character.url"
         >
@@ -32,8 +32,21 @@ export default {
   },
   created() {
     CharacterService.getCharacters(this.pagination)
-      .then((response) => (this.characters = response.data.results))
+      .then((response) => {
+        this.characters = response.data.results;
+        this.addId(this.characters);
+      })
       .catch((error) => console.log(error));
+  },
+  methods: {
+    addId: function (characters) {
+      characters.forEach(function (character) {
+        character.id = character.url.slice(
+          character.url.indexOf("/people/") + 8,
+          character.url.length - 1,
+        );
+      });
+    },
   },
 };
 </script>

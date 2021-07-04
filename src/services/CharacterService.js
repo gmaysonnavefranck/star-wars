@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "",
+  baseURL: "https://swapi.dev/api/",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -11,9 +11,9 @@ const apiClient = axios.create({
 
 export default {
   getCharacters(pagination) {
-    return apiClient.get("https://swapi.dev/api/people" + pagination);
+    return apiClient.get("people/" + pagination);
   },
-  getCharacter(url) {
-    return apiClient.get(url);
+  getCharacter(id) {
+    return apiClient.get('people/' + id);
   },
 };
