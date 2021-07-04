@@ -1,7 +1,16 @@
 <template>
   <div class="title">
-    <h1>Star Wars</h1>
-    <h1>Characters</h1>
+    <h1>
+      <router-link
+        :to="{
+          name: 'CharacterList',
+          params: {},
+        }"
+        >Star Wars
+        <br />
+        Characters
+      </router-link>
+    </h1>
   </div>
   <router-view />
 </template>
@@ -15,7 +24,11 @@ body {
   src: local("Star Jedi"),
     url("~@/assets/fonts/star-jedi.ttf") format("truetype");
 }
-h1 {
+h1,
+h1 a:hover,
+h1 a:visited,
+h1 a:link,
+h1 a:active {
   font-family: "Star Jedi", arial;
   font-size: 48px;
   color: yellow;
@@ -23,15 +36,9 @@ h1 {
   justify-content: center;
   text-align: center;
 }
-html {
-  margin: 0;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .title {
   background-color: black;
   border-bottom: 2px solid yellow;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 </style>

@@ -38,6 +38,7 @@ export default {
   color: yellow;
   justify-content: center;
   text-align: center;
+  font-size: 15px;
 }
 
 .card-header a:hover,

@@ -4,8 +4,9 @@ import CharacterDetails from "@/views/CharacterDetails.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/:id?",
     name: "CharacterList",
+    prosp: true,
     component: CharacterList,
   },
   {
@@ -19,6 +20,9 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView();
+}
 });
 
 export default router;

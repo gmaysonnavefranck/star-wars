@@ -14,6 +14,6 @@ export default {
     return apiClient.get("people/" + pagination);
   },
   getCharacter(id) {
-    return apiClient.get('people/' + id);
+    return apiClient.get("people/" + id);
   },
 };
