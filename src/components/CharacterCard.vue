@@ -2,16 +2,13 @@
   <router-link
     :to="{
       name: 'CharacterDetails',
-      params: { id: character.id },
+      params: { id: character.id, _image: image },
     }"
   >
-    <div class="card" style="width: 15rem">
+    <div class="card">
       <div class="card-header">{{ character.name.toLowerCase() }}</div>
       <!-- Bug with the font, everything must be lowercase. -->
-      <img
-        src="https://www.estudarfora.org.br/wp-content/webp-express/webp-images/uploads/2018/05/cursos-sobre-Star-Wars-1-768x512.jpg.webp"
-        class="card-img-top"
-      />
+      <img :src="image" class="card-img-top" />
     </div>
   </router-link>
 </template>
@@ -24,27 +21,25 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      image:
+        "https://www.estudarfora.org.br/wp-content/webp-express/webp-images/uploads/2018/05/cursos-sobre-Star-Wars-1-768x512.jpg.webp",
+    };
+  },
 };
 </script>
-<style>
+<style scoped>
 .card {
   background-color: #22282e !important;
-  border-color: yellow !important;
+  border-radius: 10% !important;
+  width: 15rem;
 }
 .card-header {
-  font-family: "Star Jedi";
-  src: local("Star Jedi"),
-    url("~@/assets/fonts/star-jedi.ttf") format("truetype");
-  color: yellow;
-  justify-content: center;
-  text-align: center;
   font-size: 15px;
 }
-
-.card-header a:hover,
-a:visited,
-a:link,
-a:active {
-  text-decoration: none;
+.card-img-top {
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
 }
 </style>

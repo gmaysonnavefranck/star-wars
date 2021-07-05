@@ -21,7 +21,7 @@
           >
         </div>
         <div class="col-8"></div>
-        <div class="col-2" v-if="next">
+        <div class="col-2 col-md-auto" v-if="next">
           <router-link
             :to="{
               name: 'CharacterList',
@@ -93,17 +93,4 @@ export default {
 };
 </script>
 
-<style>
-a:hover,
-a:visited,
-a:link,
-a:active {
-  font-family: "Star Jedi";
-  src: local("Star Jedi"),
-    url("~@/assets/fonts/star-jedi.ttf") format("truetype");
-  color: yellow;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-}
-</style>
+<style></style>

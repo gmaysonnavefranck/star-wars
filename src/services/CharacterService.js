@@ -16,4 +16,10 @@ export default {
   getCharacter(id) {
     return apiClient.get("people/" + id);
   },
+  getHomeworld(id) {
+    return apiClient.get("planets/" + id);
+  },
+  getStarship(id) {
+    return apiClient.get("starships/" + id);
+  },
 };

@@ -1,0 +1,17 @@
+a:visited,
+a:link,
+a:active,
+a:hover {
+  font-family: "Star Jedi";
+  src: local("Star Jedi"),
+    url("~@/assets/fonts/star-jedi.ttf") format("truetype");
+  color: yellow;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+@font-face {
+  font-family: "Star Jedi";
+  src: local("Star Jedi"),
+    url("~@/assets/fonts/star-jedi.ttf") format("truetype");
+}
