@@ -17,10 +17,11 @@
               <h1>Year of birth: {{ character.birth_year }}</h1>
               <h1>Gender: {{ character.gender }}</h1>
               <h1>Homeworld: {{ character.homeworld }}</h1>
+              <h1>Starships:</h1>
             </div>
             <div class="row">
               <h1 v-for="starship in character.starships" :key="starship">
-                Starships: {{ starship }}
+                - {{ starship }}
               </h1>
             </div>
           </div>
@@ -97,6 +98,9 @@ export default {
       }
       if (this.id < 0) {
         this.id = Math.floor(Math.random() * characterStore.count - 1) + 1;
+        if (this.id === 17) {
+          this.id++;
+        }
         this.$router.replace("/character/" + this.id);
         return;
       }

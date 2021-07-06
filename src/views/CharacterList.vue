@@ -13,6 +13,7 @@
       <div class="row justify-content-between mt-4">
         <div class="col-2" v-if="previous">
           <router-link
+            class="nav"
             :to="{
               name: 'CharacterList',
               params: { id: previous },
@@ -23,6 +24,7 @@
         <div class="col-8"></div>
         <div class="col-2 col-md-auto" v-if="next">
           <router-link
+            class="nav"
             :to="{
               name: 'CharacterList',
               params: { id: next },
@@ -104,7 +106,7 @@ export default {
 </script>
 
 <style scoped>
-a:hover {
+.nav:hover {
   text-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
     0 6px 6px rgba(255, 255, 255, 0.23);
 }
