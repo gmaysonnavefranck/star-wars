@@ -10,7 +10,7 @@ const routes = [
     component: CharacterList,
   },
   {
-    path: "/character/:id",
+    path: "/character/:_id",
     name: "CharacterDetails",
     props: true,
     component: CharacterDetails,

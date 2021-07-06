@@ -65,7 +65,7 @@ export default {
     init: function () {
       this.pagination = "";
       if (this.$route.params.id) {
-        this.pagination = "/?page=" + this.$route.params.id;
+        this.pagination = this.$route.params.id;
       }
       CharacterService.getCharacters(this.pagination)
         .then((response) => {
@@ -93,4 +93,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+a:hover {
+  text-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
+    0 6px 6px rgba(255, 255, 255, 0.23);
+}
+</style>

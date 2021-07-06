@@ -10,8 +10,4 @@ export default {
   },
 };
 </script>
-<style>
-body {
-  background-image: url("~@/assets/images/bg.jpg");
-}
-</style>
+<style></style>

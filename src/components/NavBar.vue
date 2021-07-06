@@ -30,8 +30,8 @@
             <li>
               <router-link
                 :to="{
-                  name: 'CharacterList',
-                  params: {},
+                  name: 'CharacterDetails',
+                  params: { _id: -1 },
                 }"
                 >Random Character</router-link
               >
@@ -86,7 +86,7 @@ li a:active {
   text-align: center;
 }
 .nav-bar {
-  background-color: black;
+  background-image: url("~@/assets/images/bg.jpg");
   margin-bottom: 50px;
   border-bottom: 2px solid yellow;
 }

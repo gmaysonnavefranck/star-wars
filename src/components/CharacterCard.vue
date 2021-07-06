@@ -1,15 +1,14 @@
 <template>
   <router-link
+    class="card dp2"
     :to="{
       name: 'CharacterDetails',
-      params: { id: character.id, _image: image },
+      params: { _id: character.id },
     }"
   >
-    <div class="card">
-      <div class="card-header">{{ character.name.toLowerCase() }}</div>
-      <!-- Bug with the font, everything must be lowercase. -->
-      <img :src="image" class="card-img-top" />
-    </div>
+    <div class="card-header">{{ character.name.toLowerCase() }}</div>
+    <!-- Bug with the font, everything must be lowercase. -->
+    <img :src="image" class="card-img-top" />
   </router-link>
 </template>
 <script>
@@ -23,6 +22,7 @@ export default {
   },
   data() {
     return {
+      hover: false,
       image:
         "https://www.estudarfora.org.br/wp-content/webp-express/webp-images/uploads/2018/05/cursos-sobre-Star-Wars-1-768x512.jpg.webp",
     };
@@ -41,5 +41,9 @@ export default {
 .card-img-top {
   border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
+}
+.card:hover {
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
+    0 6px 6px rgba(255, 255, 255, 0.23);
 }
 </style>
