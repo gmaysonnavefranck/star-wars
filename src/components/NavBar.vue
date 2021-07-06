@@ -5,6 +5,7 @@
         <div class="col-3">
           <div class="title">
             <router-link
+              @click="setPagination()"
               :to="{
                 name: 'CharacterList',
                 params: {},
@@ -34,8 +35,14 @@
   </nav>
 </template>
 <script>
+import characterStore from "@/store/characterStore";
 export default {
   name: "NavBar",
+  methods: {
+    setPagination() {
+      characterStore.lastPage = "";
+    },
+  },
 };
 </script>
 <style scoped>

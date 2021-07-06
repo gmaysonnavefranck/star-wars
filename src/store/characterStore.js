@@ -4,4 +4,7 @@ export default {
   characters: {},
   photos: {},
   pages: [],
+  lastPage: "",
 }
+
+// I could also do this for starships and homeworlds, but due to lack of time, at this point I wont do it. But it could greatly save some request time.

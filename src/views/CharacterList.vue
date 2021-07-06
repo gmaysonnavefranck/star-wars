@@ -110,6 +110,4 @@ export default {
   text-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
     0 6px 6px rgba(255, 255, 255, 0.23);
 }
-@media (max-width: 992px) {
-}
 </style>

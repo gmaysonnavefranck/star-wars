@@ -3,12 +3,28 @@
     <div class="panel panel-default">
       <div class="panel-body ml-6">
         <div class="row" style="height: 300px">
-          <div class="col-6 mx-auto">
+          <div class="row">
+            <div class="col-2 mb-5">
+              <router-link
+                class="nav"
+                :to="{
+                  name: 'CharacterList',
+                  params: { id: pagination },
+                }"
+                >Go back</router-link
+              >
+            </div>
+          </div>
+          <div class="col-6 mx-auto d-none d-lg-block d-xs-none">
             <img :src="character.photo" class="img-fluid" />
           </div>
-          <div class="col-5">
+          <div class="row d-lg-block d-sm-block d-lg-none mx-auto mb-4">
+            <img :src="character.photo" class="img-fluid" />
+          </div>
+          <div class="col-5 margin">
             <div class="row">
               <h1>Name: {{ character.name }}</h1>
+              <!-- Apparently the font doest not support all capital letters. -->
               <h1>Height: {{ character.height }} cm</h1>
               <h1>Mass: {{ character.mass }}</h1>
               <h1>Hair color: {{ character.hair_color }}</h1>
@@ -19,10 +35,13 @@
               <h1>Homeworld: {{ character.homeworld }}</h1>
               <h1>Starships:</h1>
             </div>
-            <div class="row">
+            <div class="row" v-if="hasStarships">
               <h1 v-for="starship in character.starships" :key="starship">
                 - {{ starship }}
               </h1>
+            </div>
+            <div v-else>
+              <h1>None</h1>
             </div>
           </div>
         </div>
@@ -39,6 +58,8 @@ export default {
     return {
       character: {},
       id: undefined,
+      pagination: "",
+      hasStarships: false,
     };
   },
   created() {
@@ -86,12 +107,14 @@ export default {
         );
         CharacterService.getStarship(id)
           .then((response) => {
+            this.hasStarships = true;
             this.character.starships.push(response.data.name);
           })
           .catch((error) => console.log(error));
       });
     },
     getId: function () {
+      this.pagination = characterStore.lastPage;
       this.id = this.$route.params._id;
       if (typeof this.id === "undefined") {
         return;
@@ -127,9 +150,19 @@ h1 {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: yellow;
 }
+.nav:hover {
+  text-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
+    0 6px 6px rgba(255, 255, 255, 0.23);
+}
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: 20px;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .margin {
+    margin: 0px 20px;
+    width: 100%;
   }
 }
 </style>

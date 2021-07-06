@@ -25,6 +25,9 @@ const apiClient = axios.create({
 
 export default {
   getCharacters(pagination) {
+    if(pagination) {
+      characterStore.lastPage = pagination;
+    }
     if(typeof characterStore.pages[pagination] !== 'undefined'){
       return new Promise((resolve) => resolve(characterStore.pages[pagination]));
     }
