@@ -1,6 +1,7 @@
 ### To run the project simply execute
 
 npm install
+and 
 npm run serve
 
 ### Heroku
