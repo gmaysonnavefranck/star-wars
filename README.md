@@ -3,6 +3,10 @@
 npm install
 npm run serve
 
+### Heroku
+
+https://gmfranck-starwars-vue.herokuapp.com/
+
 ### About
 
 This is a project to work around an API using Vue. I have tried to follow the star wars theme with
