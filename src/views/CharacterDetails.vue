@@ -4,7 +4,7 @@
       <div class="panel-body ml-6">
         <div class="row" style="height: 300px">
           <div class="col-6 mx-auto">
-            <img :src="image" class="img-fluid" />
+            <img :src="character.photo" class="img-fluid" />
           </div>
           <div class="col-5">
             <div class="row">
@@ -37,8 +37,6 @@ export default {
   data() {
     return {
       character: {},
-      image:
-        "https://www.estudarfora.org.br/wp-content/webp-express/webp-images/uploads/2018/05/cursos-sobre-Star-Wars-1-768x512.jpg.webp",
       id: undefined,
     };
   },
@@ -60,6 +58,7 @@ export default {
       this.character.eye_color = data.eye_color.toLowerCase();
       this.character.birth_year = data.birth_year.toLowerCase();
       this.character.gender = data.gender.toLowerCase();
+      this.getPhoto(data.name);
       this.getHomeworld(data.homeworld);
       this.getStarships(data.starships);
       if (!isNaN(this.character.mass)) {
@@ -106,6 +105,13 @@ export default {
           this.processData(response.data);
         })
         .catch((error) => console.log(error));
+    },
+    getPhoto(name) {
+      CharacterService.getPhoto(name)
+        .then((response) => {
+          this.character.photo = response.link;
+        })
+        .catch(() => (this.character.photo = characterStore.defaultPhoto));
     },
   },
 };

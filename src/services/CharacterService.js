@@ -10,6 +10,10 @@ function storeCharacters(characters) {
   });
 }
 
+function storePhoto(name, link) {
+  characterStore.photos[name] = link;
+}
+
 const apiClient = axios.create({
   baseURL: "https://swapi.dev/api/",
   withCredentials: false,
@@ -46,4 +50,16 @@ export default {
   getStarship(id) {
     return apiClient.get("starships/" + id);
   },
+  getPhoto(name){
+    if(typeof characterStore.photos[name] !== 'undefined'){
+      return new Promise((resolve) => resolve({link: characterStore.photos[name]}));
+    }
+    return new Promise((resolve, reject) => {
+      apiClient.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyDOQXTiIXNQ7wdl28X5FJ3SAPcbdNM8dEw&cx=ccdc96df0b94a890e&searchType=image&imgSize=xlarge&alt=json&num=1&start=1&q=" + name)
+        .then(response => {
+          storePhoto(name, response.data.items[0].link);
+          resolve(response.data.items[0])
+        }).catch(reject);
+    })
+  }
 };

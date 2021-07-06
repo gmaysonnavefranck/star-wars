@@ -15,18 +15,9 @@
             </router-link>
           </div>
         </div>
-        <div class="col-6" />
+        <div class="col-6 spacer" />
         <div class="col-4 mt-5 col-md-auto">
           <ul>
-            <li>
-              <router-link
-                :to="{
-                  name: 'CharacterList',
-                  params: {},
-                }"
-                >Facts</router-link
-              >
-            </li>
             <li>
               <router-link
                 :to="{
@@ -89,5 +80,10 @@ li a:active {
   background-image: url("~@/assets/images/bg.jpg");
   margin-bottom: 50px;
   border-bottom: 2px solid yellow;
+}
+@media (max-width: 992px) {
+  .spacer {
+    display: none;
+  }
 }
 </style>

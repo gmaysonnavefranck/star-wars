@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div
-          class="col-md-auto mt-4"
+          class="col-md-auto mt-4 justify-content-center d-inline-flex"
           v-for="character in characters"
           :key="character.url"
         >
@@ -38,7 +38,7 @@
 <script>
 import CharacterCard from "@/components/CharacterCard.vue";
 import CharacterService from "@/services/CharacterService.js";
-
+import characterStore from "@/store/characterStore";
 export default {
   props: ["id"],
   name: "CharacterList",
@@ -72,6 +72,7 @@ export default {
           this.characters = response.data.results;
           this.getRoutes(response.data.next, response.data.previous);
           this.addId(this.characters);
+          this.addPhoto(this.characters);
         })
         .catch((error) => console.log(error));
     },
@@ -81,6 +82,15 @@ export default {
           character.url.indexOf("/people/") + 8,
           character.url.length - 1,
         );
+      });
+    },
+    addPhoto: function (characters) {
+      characters.forEach(function (character) {
+        CharacterService.getPhoto(character.name)
+          .then((response) => {
+            character.photo = response.link;
+          })
+          .catch(() => (character.photo = characterStore.defaultPhoto));
       });
     },
     getRoutes: function (next, previous) {
@@ -97,5 +107,7 @@ export default {
 a:hover {
   text-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
     0 6px 6px rgba(255, 255, 255, 0.23);
+}
+@media (max-width: 992px) {
 }
 </style>
